@@ -1,0 +1,167 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "react demo",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:3000",
+      "webRoot": "${workspaceFolder}",
+      "runtimeArgs": ["--auto-open-devtools-for-tabs"]
+    },
+    {
+      "name": "react demo 02",
+      "request": "launch",
+      "type": "chrome",
+      "file": "${workspaceFolder}/react-demo-02/index.html",
+      "sourceMapPathOverrides": {
+        "meteor://💻app/*": "${workspaceFolder}/*",
+        "webpack:///./~/*": "${workspaceFolder}/node_modules/*",
+        "webpack://?:*/*": "${workspaceFolder}/react-demo-02/*"
+      }
+    },
+    {
+      "name": "vue demo",
+      "request": "launch",
+      "type": "chrome",
+      "url": "http://localhost:8080",
+      "webRoot": "${workspaceFolder}",
+      "runtimeArgs": ["--auto-open-devtools-for-tabs"],
+      "sourceMapPathOverrides": {
+        "meteor://💻app/*": "${workspaceFolder}/*",
+        "webpack:///./~/*": "${workspaceFolder}/node_modules/*",
+        "webpack://?:*/*": "${workspaceFolder}/vue-demo/*"
+      }
+    },
+    {
+      "name": "node debug",
+      "port": 9222,
+      "request": "attach",
+      "skipFiles": ["<node_internals>/**"],
+      "type": "node"
+    },
+    {
+      "name": "node debug 02",
+      // "program": "${workspaceFolder}/node-debug/index.js",
+      "program": "${file}",
+      "request": "launch",
+      "skipFiles": ["<node_internals>/**"],
+      "type": "node",
+      "stopOnEntry": true
+    },
+    {
+      "name": "Launch via NPM",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/ant-design",
+      "runtimeArgs": ["run-script", "dist"],
+      "runtimeExecutable": "npm",
+      "skipFiles": ["<node_internals>/**"],
+      "type": "node",
+      // 输出在terminal
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "nest debug",
+      "request": "launch",
+      "runtimeArgs": ["run-script", "start"],
+      "runtimeExecutable": "pnpm",
+      "skipFiles": ["<node_internals>/**"],
+      "type": "node",
+      "cwd": "${workspaceFolder}/nest-demo",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "nest source debug",
+      "request": "launch",
+      "runtimeArgs": ["run-script", "start"],
+      "runtimeExecutable": "npm",
+      "skipFiles": ["<node_internals>/**"],
+      "type": "node",
+      "cwd": "${workspaceFolder}/nest/sample/01-cats-app",
+      "console": "integratedTerminal",
+      "resolveSourceMapLocations": [
+        "${workspaceFolder}/**"
+        // 去掉这条，就可以查找node_modules下的sourcemap
+        // "!**/node_modules/**"
+      ]
+    },
+    {
+      "name": "调试patch package",
+      "program": "${workspaceFolder}/patch-package/dist/index.js",
+      "args": ["acorn"],
+      "cwd": "${workspaceFolder}/patch-package",
+      "request": "launch",
+      "skipFiles": ["<node_internals>/**"],
+      "type": "node",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "调试patch package apply",
+      "program": "${workspaceFolder}/patch-package/dist/index.js",
+      "args": [],
+      "cwd": "${workspaceFolder}/patch-package",
+      "request": "launch",
+      "skipFiles": ["<node_internals>/**"],
+      "type": "node",
+      "console": "integratedTerminal"
+    },
+    // babel-parser包的sourcemap的源码路径已被我手动替换成babel源码目录下，所以可以直接跳过去
+    {
+      "name": "调试 babel",
+      // "program": "${workspaceFolder}/babel-demo/index.js",
+      "program": "index.js",
+      "cwd": "${workspaceFolder}/babel-demo",
+      "request": "launch",
+      "skipFiles": ["<node_internals>/**"],
+      "type": "node",
+      "resolveSourceMapLocations": [
+        "${workspaceFolder}/**"
+        // "!**/node_modules/**"
+      ]
+    },
+    {
+      "name": "调试 vite",
+      "request": "launch",
+      "runtimeArgs": ["run-script", "dev"],
+      "runtimeExecutable": "pnpm",
+      "cwd": "${workspaceFolder}/vite-demo",
+      "skipFiles": ["<node_internals>/**"],
+      "type": "node",
+      "console": "integratedTerminal",
+      "resolveSourceMapLocations": [
+        "${workspaceFolder}/**"
+        // "!**/node_modules/**"
+      ]
+    },
+    {
+      "name": "调试 ts 源码",
+      "cwd": "${workspaceFolder}/TypeScript",
+      "program": "./test.js",
+      "request": "launch",
+      "skipFiles": ["<node_internals>/**"],
+      "type": "node",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "调试 jest 用例",
+      "cwd": "${workspaceFolder}/nest-demo",
+      "program": "./node_modules/jest/bin/jest.js",
+      // 使用当前打开的文件，并匹配测试用例名称
+      "args": ["${file}", "-t", "${input:case}"],
+      "console": "integratedTerminal",
+      "request": "launch",
+      "skipFiles": ["<node_internals>/**"],
+      "type": "node"
+    }
+  ],
+  "inputs": [
+    {
+      "id": "case",
+      "type": "promptString",
+      "description": "请输入测试用例的名称"
+    }
+  ]
+}

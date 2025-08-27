@@ -1,0 +1,20 @@
+{
+  "configurations": [
+    {
+      "name": "eslint 调试",
+      "request": "launch",
+      "runtimeArgs": ["eslint", "--fix", "index.js"],
+      "runtimeExecutable": "pnpm",
+      "skipFiles": ["<node_internals>/**"],
+      "type": "node",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "eslint 调试2",
+      "program": "${workspaceFolder}/use-api.js",
+      "request": "launch",
+      "skipFiles": ["<node_internals>/**"],
+      "type": "node"
+    }
+  ]
+}
